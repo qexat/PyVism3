@@ -1,7 +1,7 @@
-OLD:    @x ^l 3 ^n
+OLD:    &x ^l 3 ^n
 NEW:    @x = 3
 
-OLD:    $0 ^l "x" ^n $1 $1 ^l "y" ^n $2 ^l "z" ^n + f
+OLD:    $0 ^l "x" ^n $1 ^l "y" ^n $2 ^l "z" ^n + f
 NEW:    @x @y + print
 
 OLD:    :0 ^l "Hello World!\n" ^n f
