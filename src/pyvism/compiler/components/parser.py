@@ -1,9 +1,10 @@
 # pyright: reportImplicitOverride = false
 
 import dataclasses
-from pyvism.compiler.components.token import TokenType
 
-from pyvism.compiler.interface import IDatabase, IParser
+from pyvism.compiler.components.token import TokenType
+from pyvism.compiler.interface import IDatabase
+from pyvism.compiler.interface import IParser
 
 
 @dataclasses.dataclass(slots=True)

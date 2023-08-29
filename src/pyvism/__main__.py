@@ -19,7 +19,7 @@ def parse_args() -> argparse.Namespace:
     parser_global = argparse.ArgumentParser()
     subparsers = parser_global.add_subparsers(dest="subcommand")
 
-    # <<= Shell subcommand ==> #
+    # <<= Shell subcommand =>> #
     """
     Start the REPL.
 
@@ -52,7 +52,7 @@ def parse_args() -> argparse.Namespace:
         help="activate strict mode (warnings become errors)",
     )
 
-    # <<= Run subcommand ==> #
+    # <<= Run subcommand =>> #
     """
     Run a .vmbc file or compile then run a .vism file.
 
@@ -68,7 +68,7 @@ def parse_args() -> argparse.Namespace:
         help="prevent from removing the intermediate bytecode file",
     )
 
-    # <<= Global args ==> #
+    # <<= Global args =>> #
     """
     Global args.
     """

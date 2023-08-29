@@ -2,8 +2,10 @@
 
 import dataclasses
 
-from pyvism.compiler.components.token import Token, TokenType
-from pyvism.compiler.interface import IDatabase, IScanner
+from pyvism.compiler.components.token import Token
+from pyvism.compiler.components.token import TokenType
+from pyvism.compiler.interface import IDatabase
+from pyvism.compiler.interface import IScanner
 
 
 @dataclasses.dataclass(slots=True)
