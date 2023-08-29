@@ -13,7 +13,7 @@ class Diagnostic(IDiagnostic[TokenType]):
 
 @dataclasses.dataclass(slots=True)
 class Error(Diagnostic, IError[TokenType]):
-    critical: bool
+    pass
 
 
 @dataclasses.dataclass(slots=True)

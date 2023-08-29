@@ -1,6 +1,7 @@
 # pyright: reportImplicitOverride = false
 
 import dataclasses
+from pyvism.compiler.components.diagnostic import Error
 
 from pyvism.compiler.components.token import Token
 from pyvism.compiler.components.token import TokenType
@@ -33,7 +34,12 @@ class Scanner(IScanner[TokenType]):
     def make_token(self, token_type: TokenType) -> None:
         lexeme = self.source[self.start : self.current]
         token = Token(token_type, self.start, self.current, self.line_no, lexeme)
-        self.push_token(token)
+        self.tokens.append(token)
+
+    def make_error(self, id: int) -> None:
+        # error = <retreive_error_by_id(id)>
+        error = Error(self.__class__, id, "<summary>")
+        self.errors.append(error)
 
     def scan_token(self) -> None:
         char = self.consume()
@@ -89,4 +95,8 @@ class Scanner(IScanner[TokenType]):
             self.scan_token()
 
         self.make_token(TokenType.EOF)
+        self.push_to_database(database)
+
+    def push_to_database(self, database: IDatabase[TokenType]) -> None:
         database.tokens.extend(self.tokens)
+        database.errors.extend(self.errors)

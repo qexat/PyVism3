@@ -26,8 +26,9 @@ class IToken(typing.Protocol[TokenType_T]):
 
 
 class IScanner(Runnable[TokenType_T], typing.Protocol[TokenType_T]):
-    # Local copy of the output -- it is then sent to the database
+    # Local copy of the output and diagnostics -- it is then sent to the database
     tokens: list[IToken[TokenType_T]] = []
+    errors: list[IError[TokenType_T]] = []
 
     # Scanner state values
     start: int = 0
@@ -36,9 +37,6 @@ class IScanner(Runnable[TokenType_T], typing.Protocol[TokenType_T]):
 
     # Local copy of the input
     source: str = ""
-
-    def push_token(self, token: IToken[TokenType_T]) -> None:
-        self.tokens.append(token)
 
 
 class IParser(Runnable[TokenType_T], typing.Protocol[TokenType_T]):
@@ -59,7 +57,7 @@ class IDiagnostic(typing.Protocol[TokenType_T]):
 
 
 class IError(IDiagnostic[TokenType_T], typing.Protocol):
-    critical: bool
+    pass
 
 
 class IWarning(IDiagnostic[TokenType_T], typing.Protocol):
@@ -71,8 +69,8 @@ class IDatabase(typing.Protocol[TokenType_T]):
     tokens: list[IToken[TokenType_T]]
     ast: ...
 
-    # errors: list[?]
-    # warnings: list[?]
+    errors: list[IError[TokenType_T]] = []
+    warnings: list[IWarning[TokenType_T]] = []
 
 
 class IReporter(typing.Protocol):
