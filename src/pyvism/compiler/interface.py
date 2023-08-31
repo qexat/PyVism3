@@ -69,8 +69,8 @@ class IDatabase(typing.Protocol[TokenType_T]):
     tokens: list[IToken[TokenType_T]]
     ast: ...
 
-    errors: list[IError[TokenType_T]] = []
-    warnings: list[IWarning[TokenType_T]] = []
+    errors: list[IError[TokenType_T]]
+    warnings: list[IWarning[TokenType_T]]
 
 
 class IReporter(typing.Protocol):

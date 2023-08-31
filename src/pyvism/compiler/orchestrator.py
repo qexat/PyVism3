@@ -21,4 +21,6 @@ class Orchestrator(typing.Generic[TokenType_T]):
             component.run(self.database)
             # <check here the component's results>
 
+        print(self.database)
+
         return os.EX_OK

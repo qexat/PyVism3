@@ -1,8 +1,8 @@
 # pyright: reportImplicitOverride = false
 
 import dataclasses
-from pyvism.compiler.components.diagnostic import Error
 
+from pyvism.compiler.components.diagnostic import Error
 from pyvism.compiler.components.token import Token
 from pyvism.compiler.components.token import TokenType
 from pyvism.compiler.interface import IDatabase
@@ -29,12 +29,43 @@ class Scanner(IScanner[TokenType]):
         return char
 
     def matches(self, expected: str) -> bool:
-        return self.peek() == expected
+        return self.peek(len(expected)) == expected
 
     def make_token(self, token_type: TokenType) -> None:
         lexeme = self.source[self.start : self.current]
         token = Token(token_type, self.start, self.current, self.line_no, lexeme)
         self.tokens.append(token)
+
+    def make_long_token(
+        self,
+        *potentials: tuple[str, TokenType],
+        fallback: TokenType | None = None,
+    ) -> None:
+        """
+        This function allows making longer tokens if they all start with the same
+        character. An optional fallback token can be provided if the said character
+        can be matched alone. If it is set to `None`, it will make an error instead.
+        """
+
+        # Sorting potentials in decreasing string length order.
+        # This is because of the maximum munch rule.
+        sorted_potentials = sorted(
+            potentials,
+            key=lambda value: len(value[0]),
+            reverse=True,
+        )
+
+        for string, token_type in sorted_potentials:
+            if self.matches(string):
+                self.make_token(token_type)
+                self.advance(len(string))
+                return
+
+        if fallback:
+            self.make_token(fallback)
+            return
+
+        self.make_error()  # unexpected char (like case _)
 
     def make_error(self, id: int) -> None:
         # error = <retreive_error_by_id(id)>
