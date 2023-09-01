@@ -16,7 +16,7 @@ The Integer type represents "full", round numbers (e.g. in counting).
 
 **Note:** `-69` is syntax sugar for `0 69 -`.
 
-See also: [Technical details :: Integer](../tech_details/basic_dt.md#integer)
+See also: [Technical details :: Integer](../tech_details/01_basic_dt.md#integer)
 
 ## Reals
 
@@ -31,7 +31,7 @@ The Real type represents decimal numbers (e.g. length, duration, temperature...)
 
 **Note:** `-42.7` is syntax sugar for `.0 42.7 -`.
 
-See also: [Technical details :: Real](../tech_details/basic_dt.md#real)
+See also: [Technical details :: Real](../tech_details/01_basic_dt.md#real)
 
 ## Character strings
 
@@ -52,7 +52,7 @@ To write a double-quote inside a string, escape it by prepending a backslash `\`
 The following text will be double-quoted: "I'm double-quoted!"
 ```
 
-See also: [Technical details :: String](../tech_details/basic_dt.md#string)
+See also: [Technical details :: String](../tech_details/01_basic_dt.md#string)
 
 ## Byte strings
 
@@ -65,7 +65,7 @@ It is written as text surrounded by single-quotes:
 '\x04\x02\x00'
 ```
 
-See also: [Technical details :: Bytestring](../tech_details/basic_dt.md#bytestring)
+See also: [Technical details :: Bytestring](../tech_details/01_basic_dt.md#bytestring)
 
 ## Tuples
 
@@ -82,7 +82,7 @@ It is written as a sequence of elements separated by commas and surrounded by pa
 
 :x: A tuple CANNOT contain only one element!
 
-See also: [Technical details :: Tuple](../tech_details/basic_dt.md#tuple)
+See also: [Technical details :: Tuple](../tech_details/01_basic_dt.md#tuple)
 
 ## Lists
 
@@ -97,11 +97,11 @@ It is written as a sequence of elements separated by commas and surrounded by sq
 []  # empty list
 ```
 
-Contrary to [tuples](#tuples), a list can contain only one element.
+Contrary to [tuples](./02_basic_dt.md#tuples), a list can contain only one element.
 
 :x: A list CANNOT contain elements of different types^[Be aware: a list of integers and a list of reals are NOT considered of the same type, despite being both lists.]!
 
-See also: [Technical details :: List](../tech_details/basic_dt.md#list)
+See also: [Technical details :: List](../tech_details/01_basic_dt.md#list)
 
 ## Sets
 
@@ -115,7 +115,7 @@ It is written as a sequence of elements separated by commas and surrounded by br
 {}  # empty set (also called null set)
 ```
 
-See also: [Technical details :: Set](../tech_details/basic_dt.md#set)
+See also: [Technical details :: Set](../tech_details/01_basic_dt.md#set)
 
 ## Mappings
 
@@ -130,4 +130,4 @@ It is written as a sequence of key-value pairs, separated by commas and surround
 |
 ```
 
-See also: [Technical details :: Mapping](../tech_details/basic_dt.md#mapping)
+See also: [Technical details :: Mapping](../tech_details/01_basic_dt.md#mapping)

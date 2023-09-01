@@ -79,7 +79,7 @@ Applies a function to every member of a collection.
 [2, 4, 6, 8]
 ```
 
-See also: [Partialization](#partialization)
+See also: [Partialization](./03_fn_call.md#partialization)
 
 ### foldleft
 
@@ -90,7 +90,7 @@ Accumulate a collection using a function.
 10
 ```
 
-See also: [Partialization](#partialization)
+See also: [Partialization](./03_fn_call.md#partialization)
 
 ### length
 
