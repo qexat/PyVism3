@@ -55,6 +55,11 @@ class IDiagnostic(typing.Protocol[TokenType_T]):
     id: int
     summary: str
 
+    line_no: int
+    spos: int
+    epos: int
+    message: str
+
 
 class IError(IDiagnostic[TokenType_T], typing.Protocol):
     pass
